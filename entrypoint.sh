@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -e
+set -o pipefail
+
 echo "Running OPA Policies on Terraform Code"
 echo "Terraform Code Location => $INPUT_TERRAFORM__CODE_BASE_PATH"
 
