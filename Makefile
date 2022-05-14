@@ -1,4 +1,4 @@
-DATA_FILES:=utils.rego config.json tfplan.json
+DATA_FILES:=utils.rego tfplan.json
 CURRENT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 POLICY_DIR:="$(CURRENT_DIR)/policies/Infrastructure"
 POLICY_TYPES:=$$(find $(POLICY_DIR) -mindepth 1 -maxdepth 1 -type d | awk -F "/" '{print $$NF}')
@@ -12,8 +12,6 @@ release:
 	semtag final -s minor
 
 opa:
-# Generate Config JSON 
-	python3 $(POLICY_DIR)/getConfig.py ; \
 
 # Generate Report
 	echo "#### OPA Compliance Report" > REPORT.md; \

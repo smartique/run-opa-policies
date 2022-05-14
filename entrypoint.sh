@@ -9,16 +9,12 @@ echo "Terraform Code Location => $INPUT_TERRAFORM_CODE_BASE_PATH"
 # Terraform Version
 terraform --version
 
-
 # Find .tf files under this path
-
-
-
-# Create a Terraform Plan using Terraform Cloud Workspace
-
-
-# Run Terraform OPA Policies
-
+pushd $INPUT_TERRAFORM_CODE_BASE_PATH
+terraform plan -out plan.out 
+terraform show -json plan.out > policies/Infrastructure/tfplan.json
+make opa
+popd
 
 
 # Print the Result
