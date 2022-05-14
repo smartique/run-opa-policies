@@ -12,3 +12,6 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.terraform_code_base_path }}
+  branding:
+    icon: 'award'  
+    color: 'green'
