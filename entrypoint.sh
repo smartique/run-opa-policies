@@ -6,6 +6,9 @@ set -o pipefail
 echo "Running OPA Policies on Terraform Code"
 echo "Terraform Code Location => $INPUT_TERRAFORM_CODE_BASE_PATH"
 
+# Terraform Version
+terraform --version
+
 
 # Find .tf files under this path
 
