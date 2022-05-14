@@ -14,7 +14,6 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    TERRAFORM_VERSION: ${{ inputs.terraform_version }}
   args:
     - ${{ inputs.terraform_code_base_path }}
+    - ${{ inputs.terraform_version }}
