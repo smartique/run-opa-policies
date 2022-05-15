@@ -3,16 +3,12 @@
 set -e
 set -o pipefail
 
-echo "Running OPA Policies on Terraform Code"
-echo "Terraform Code Location => $INPUT_TERRAFORM_CODE_BASE_PATH"
+echo "Terraform Plan to evaulate $INPUT_TFPLAN_JSON"
 
-# Terraform Version
-terraform --version
+# Copy the JSON to policies forlder
+cp $INPUT_TFPLAN_JSON policies/Infrastructure/tfplan.json
 
-# Find .tf files under this path
-cd $INPUT_TERRAFORM_CODE_BASE_PATH
-terraform plan -out plan.out 
-terraform show -json plan.out > policies/Infrastructure/tfplan.json
+# Run Opa 
 make opa
 
 

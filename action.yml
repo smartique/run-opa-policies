@@ -3,17 +3,12 @@ name: 'Run OPA Policies'
 author: "Anup Gupta (Smartique)"
 description: 'Run OPA Policies on terraform code'
 inputs:
-  terraform_code_base_path:
-    description: 'Path to Find Terraform Files'
+  tfplan_json:
+    description: 'Terraform plan Json file to evaluate with OPA'
     required: true
-    default: "./"
-  terraform_version:
-    description: 'Terraform Version to use'
-    required: true
-    default: "1.1.2"
+    default: "./tfplan.json"
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.terraform_code_base_path }}
-    - ${{ inputs.terraform_version }}
+    - ${{ inputs.tfplan_json }}

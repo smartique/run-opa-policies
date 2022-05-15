@@ -3,13 +3,7 @@ CURRENT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 POLICY_DIR:="$(CURRENT_DIR)/policies/Infrastructure"
 POLICY_TYPES:=$$(find $(POLICY_DIR) -mindepth 1 -maxdepth 1 -type d | awk -F "/" '{print $$NF}')
 
-.PHONY: changelog release opa
-
-changelog:
-	git-chglog -o CHANGELOG.md --next-tag `semtag final -s minor -o`
-
-release:
-	semtag final -s minor
+.PHONY: opa
 
 opa:
 
